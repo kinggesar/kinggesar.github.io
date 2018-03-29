@@ -15,7 +15,7 @@
 <body>
 
 <!-- 代码部分begin -->
-<div class="sky" style="height:380px">
+<div class="sky" style="height:300px">
 	<div class="clouds_one"></div>
 	<div class="clouds_two"></div>
 	<div class="clouds_three"></div>
@@ -25,15 +25,15 @@
 <table width="100%">
   <tr>
     <td><div id="RHmain" style="height:400px"></div></td>
-    <td><div id="tempmain" style="height:400px"></div></td>
-	<td><div id="cammain" style="height:400px"><img  align=center  height='80%' width='80%' src="image/new.jpeg"></img></div></td>
+   
+
   </tr>
   <tr>
-    <th align=center width="33%">RH</th>
-    <th align=center width="33%">TEMP</th>
-	<th align=center width="33%">CAM0</th>
+ <td><div id="tempmain" style="height:400px"></div></td>
   </tr>
-
+  <tr>
+	<td><div  align=center  id="cammain" style="height:400px"><img  align=center src="image/new.jpeg"></img></div></td>
+  </tr>
 </table>
 
 <script>
@@ -187,7 +187,7 @@
 	
 	function updatetemprh(){ 
 	//document.getElementById("environment").innerHTML = "RH:"+rh+"TP:"+temp;
-	document.getElementById("cammain").innerHTML = "<img  align=center height='80%' width='80%' src=" + "'"+myimage+"'>"+"</img>";
+	document.getElementById("cammain").innerHTML = "<img  align=center  src=" + "'"+myimage+"'>"+"</img>";
 	 meter1=setTimeout("updatetemprh()", 3000);
 	 rh=rh+1;
 	 temp=temp+1;
