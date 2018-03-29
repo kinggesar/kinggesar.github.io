@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>environment</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<script src="js/echarts-all.js"></script>
+<script src="data/dat.js" language="javascript" type="text/javascript"></script>
+
+
+
+<body>
+
+<!-- 代码部分begin -->
+<div class="sky">
+	<div class="clouds_one"></div>
+	<div class="clouds_two"></div>
+	<div class="clouds_three"></div>
+</div>
+<!-- 代码部分end -->
+
+<table width="100%">
+  <tr>
+    <td><div id="RHmain" style="height:400px"></div></td>
+    <td><div id="tempmain" style="height:400px"></div></td>
+	<td><div id="cammain" style="height:400px"><img  align=center  height='80%' width='80%' src="image/new.jpeg"></img></div></td>
+  </tr>
+  <tr>
+    <th align=center width="33%">RH</th>
+    <th align=center width="33%">TEMP</th>
+	<th align=center width="33%">CAM0</th>
+  </tr>
+
+</table>
+
+<script>
+   // 基于准备好的dom，初始化echarts图表
+    var myChart = echarts.init(document.getElementById('RHmain')); 
+    
+    var option = {
+        tooltip : {
+            formatter: "{a} <br/>{b} : {c}%"
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: false},
+                restore : {show: false},
+                saveAsImage : {show: false}
+            }
+        },
+        series : [
+            {
+                name:'RH',
+                type:'gauge',				
+				min:0,
+				max:100,            
+                splitNumber: 10,       // 分割段数，默认为5
+                axisLine: {            // 坐标轴线
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: [[0.2, '#228b22'],[0.8, '#48b'],[1, '#ff4500']], 
+                        width: 8
+                    }
+                },
+                axisTick: {            // 坐标轴小标记
+                    splitNumber: 10,   // 每份split细分多少段
+                    length :12,        // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: 'auto'
+                    }
+                },
+                axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        color: 'auto'
+                    }
+                },
+                splitLine: {           // 分隔线
+                    show: true,        // 默认显示，属性show控制显示与否
+                    length :30,         // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                        color: 'auto'
+                    }
+                },
+                pointer : {
+                    width : 5
+                },
+                title : {
+                    show : true,
+                    offsetCenter: [0, '-40%'],       // x, y，单位px
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder'
+                    }
+                },
+                detail : {
+                    formatter:'{value}%',
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        color: 'auto',
+                        fontWeight: 'bolder'
+                    }
+                },
+                data:[{value: rh, name: 'RHrate'}]
+            }
+        ]
+    };
+
+  var myChart1 = echarts.init(document.getElementById('tempmain')); 
+    
+    var option1 = {
+        tooltip : {
+            formatter: "{a} <br/>{b} : {c}%"
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: false},
+                restore : {show: false},
+                saveAsImage : {show: false}
+            }
+        },
+        series : [
+            {
+                name:'TEMP',
+                type:'gauge',				
+				min:0,
+				max:100,            
+                splitNumber: 10,       // 分割段数，默认为5
+                axisLine: {            // 坐标轴线
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: [[0.2, '#228b22'],[0.8, '#48b'],[1, '#ff4500']], 
+                        width: 8
+                    }
+                },
+                axisTick: {            // 坐标轴小标记
+                    splitNumber: 10,   // 每份split细分多少段
+                    length :12,        // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle控制线条样式
+                        color: 'auto'
+                    }
+                },
+                axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        color: 'auto'
+                    }
+                },
+                splitLine: {           // 分隔线
+                    show: true,        // 默认显示，属性show控制显示与否
+                    length :30,         // 属性length控制线长
+                    lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                        color: 'auto'
+                    }
+                },
+                pointer : {
+                    width : 5
+                },
+                title : {
+                    show : true,
+                    offsetCenter: [0, '-40%'],       // x, y，单位px
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        fontWeight: 'bolder'
+                    }
+                },
+                detail : {
+                    formatter:'{value}%',
+                    textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                        color: 'auto',
+                        fontWeight: 'bolder'
+                    }
+                },
+                data:[{value: rh, name: 'TEMP'}]
+            }
+        ]
+    };	
+
+    // 为echarts对象加载数据 
+    myChart.setOption(option);
+    myChart1.setOption(option1);
+    setInterval(function (){
+        option.series[0].data[0].value = rh;
+		option1.series[0].data[0].value = temp;
+        myChart.setOption(option,true);
+		myChart1.setOption(option1,true);
+    },2000);
+	
+	
+	function updatetemprh(){ 
+	//document.getElementById("environment").innerHTML = "RH:"+rh+"TP:"+temp;
+	document.getElementById("cammain").innerHTML = "<img  align=center height='80%' width='80%' src=" + "'"+myimage+"'>"+"</img>";
+	 meter1=setTimeout("updatetemprh()", 3000);
+	 rh=rh+1;
+	 temp=temp+1;
+	 if(rh>100) 
+		 rh=20;
+}  
+meter1=setTimeout("updatetemprh()",3000); 
+
+	</script>
+
+
+</body>
+</html>
